@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/bonryu/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["py_lsp.nvim"] = {
+    loaded = true,
+    path = "/home/bonryu/.local/share/nvim/site/pack/packer/start/py_lsp.nvim",
+    url = "https://github.com/HallerPatrick/py_lsp.nvim"
+  },
   ["rose-pine"] = {
     config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
     loaded = true,
