@@ -1,37 +1,50 @@
+vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-
+-- move lines up and down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- leaves cursor in place when joining lines
 vim.keymap.set("n", "J", "mzJ`z")
+-- leaves cursor in place while half page jumping
+-- zz in vim centres screen on current line
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- allows searched and found terms to stay in the middle
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
+-- -- remaps for primeagen for twitch
+-- vim.keymap.set("n", "<leader>vwm", function()
+--     require("vim-with-me").StartVimWithMe()
+-- end)
+-- -- remaps for primeagen for twitch
+-- vim.keymap.set("n", "<leader>svwm", function()
+--     require("vim-with-me").StopVimWithMe()
+-- end)
+
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
-
+-- vim.keymap.set("x", "<leader>p", "\"_dP")
+-- delete into the null/void register, then paste before. Use like this:
+-- 1. yiw foo
+-- 2. viw bar
+-- 3. <leader>p to replace bar with foo.
+-- 4. optionally "p" to keep pasting foo after the newly pasted "foo"
+vim.keymap.set({ "x" }, "<leader>p", [["_dP]])
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+-- remap <leader>[y|Y] to copy to system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
+-- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>!tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- quick fix navigation
