@@ -1,2 +1,2 @@
 require("bonryu.remap")
-require("bonryu.set")
+require("bonryu.options")
