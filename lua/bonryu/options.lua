@@ -11,7 +11,7 @@ local options = {
     nu = true,                              -- number, nu, nonumber, nonu. Line numbering
     pumheight = 10,                         -- pop up menu height
     showmode = true,                        -- keep showing the mode
-    -- showtabline = 2,                        -- always show tabs
+    showtabline = 2,                        -- always show tabs
 
     ignorecase = true,                      -- ignore case in search patterns
     smartcase = true,                       -- smart case

@@ -19,11 +19,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
--- Use a protected call so we don't error out on firt use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-    return
-end
 
 -- Autocommand that reloads neovim whenever you save the packer.lua file
 vim.cmd [[
@@ -33,21 +28,26 @@ vim.cmd [[
     augroup end
 ]]
 
+-- Use a protected call so we don't error out on firt use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+    return
+end
+
+-- Have packer use a popup window
+packer.init {
+    display = {
+        open_fn = function()
+            return require("packer.util").float { border = "rounded" }
+        end,
+    },
+}
+
 -- Install your plugins here
 -- return require('packer').startup(function(use)
 return packer.startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-
-
-    -- Colorschemes
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
 
     -- Essentials
     use {
@@ -67,20 +67,20 @@ return packer.startup(function(use)
         branch = 'v1.x',
         requires = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            { 'williamboman/mason.nvim' }, -- Optional
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason.nvim' },           -- Optional
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'hrsh7th/cmp-buffer' }, -- Optional
-            { 'hrsh7th/cmp-path' }, -- Optional
+            { 'hrsh7th/nvim-cmp' },         -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+            { 'hrsh7th/cmp-buffer' },       -- Optional
+            { 'hrsh7th/cmp-path' },         -- Optional
             { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-            { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+            { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
             -- Snippets
-            { 'L3MON4D3/LuaSnip' }, -- Required
+            { 'L3MON4D3/LuaSnip' },             -- Required
             { 'rafamadriz/friendly-snippets' }, -- Optional
         }
     }
@@ -99,8 +99,29 @@ return packer.startup(function(use)
         -- tag = "v0.0.1"
     }
 
-    -- More Plugins
-    use {'feline-nvim/feline.nvim'}
-    use('tpope/vim-surround')  -- in (...) do `cs([` to replace () with []
+    -- Colorschemes
+    use({
+        'rose-pine/neovim',
+        -- as = 'rose-pine',
+        -- config = function()
+        --     vim.cmd('colorscheme rose-pine')
+        --     -- vim.cmd[[ highlight SignColumn guibg=gray ]]
+        -- end
+    })
+    use "lunarvim/colorschemes"
+    use "folke/tokyonight.nvim"
 
+    -- More Plugins
+    use { 'feline-nvim/feline.nvim' }
+    use('tpope/vim-surround') -- in (...) do `cs([` to replace () with []
+    use { 'SirVer/ultisnips',
+        requires = { { 'honza/vim-snippets', rtp = '.' } },
+        config = function()
+            vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
+            vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+            vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+            vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+            vim.g.UltiSnipsRemoveSelectModeMappings = 0
+        end
+    }
 end)
