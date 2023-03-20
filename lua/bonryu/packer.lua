@@ -101,5 +101,6 @@ return packer.startup(function(use)
 
     -- More Plugins
     use {'feline-nvim/feline.nvim'}
-    use('tpope/vim-surround')
+    use('tpope/vim-surround')  -- in (...) do `cs([` to replace () with []
+
 end)
