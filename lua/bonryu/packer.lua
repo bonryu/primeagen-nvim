@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('packer')` from your init.vim
 
 local fn = vim.fn
 -- Automaticall install packer
@@ -76,6 +76,7 @@ return packer.startup(function(use)
             { 'hrsh7th/cmp-nvim-lsp' },     -- Required
             { 'hrsh7th/cmp-buffer' },       -- Optional
             { 'hrsh7th/cmp-path' },         -- Optional
+            { 'hrsh7th/cmp-cmdline' },      -- Optional
             { 'saadparwaiz1/cmp_luasnip' }, -- Optional
             { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
@@ -112,16 +113,12 @@ return packer.startup(function(use)
     use "folke/tokyonight.nvim"
 
     -- More Plugins
-    use { 'feline-nvim/feline.nvim' }
-    use('tpope/vim-surround') -- in (...) do `cs([` to replace () with []
-    use { 'SirVer/ultisnips',
-        requires = { { 'honza/vim-snippets', rtp = '.' } },
-        config = function()
-            vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
-            vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
-            vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
-            vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
-            vim.g.UltiSnipsRemoveSelectModeMappings = 0
-        end
-    }
+    use { 'feline-nvim/feline.nvim' } -- status line
+    use('tpope/vim-surround')         -- in (...) do `cs([` to replace () with []
+
+    use "nvim-tree/nvim-web-devicons"
+    use "nvim-tree/nvim-tree.lua"
+    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+    use "moll/vim-bbye"
+    use { "akinsho/toggleterm.nvim"}
 end)
