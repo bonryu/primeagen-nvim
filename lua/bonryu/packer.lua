@@ -120,5 +120,8 @@ return packer.startup(function(use)
     use "nvim-tree/nvim-tree.lua"
     use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
     use "moll/vim-bbye"
-    use { "akinsho/toggleterm.nvim"}
+    use { "akinsho/toggleterm.nvim" }
+    use { "lewis6991/gitsigns.nvim",
+        -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+    }
 end)
