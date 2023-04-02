@@ -88,11 +88,11 @@ local function open_nvim_tree(data)
     end
 
     -- Uncomment below lines to open a new buffer by default besides nvimtree
-    -- -- create a new, empty buffer
-    -- vim.cmd.enew()
+    -- create a new, empty buffer
+    vim.cmd.enew()
 
-    -- -- wipe the directory buffer
-    -- vim.cmd.bw(data.buf)
+    -- wipe the directory buffer
+    vim.cmd.bw(data.buf)
 
     -- change to the directory
     vim.cmd.cd(data.file)

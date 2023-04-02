@@ -5,10 +5,10 @@ require('lualine').setup {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-            statusline = {'nvim-tree'},
-            winbar = {'nvim-tree'},
+            statusline = { 'NvimTree' },
+            winbar = { 'NvimTree' },
         },
-        ignore_focus = {},
+        ignore_focus = {'NvimTree'},
         always_divide_middle = true,
         globalstatus = true,
         refresh = {
@@ -21,7 +21,7 @@ require('lualine').setup {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_x = { 'encoding', 'fileformat'},
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
     },
@@ -34,7 +34,21 @@ require('lualine').setup {
         lualine_z = {}
     },
     tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {'nvim-tree'}
+    winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
+    },
+    inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
+    },
+    extensions = { 'nvim-tree' }
 }

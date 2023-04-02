@@ -42,8 +42,8 @@ vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
 -- vim.keymap.set("n", "<leader>e", ":Vex 20<cr>")
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>", opts_silent)
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>")
-vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<cr>")
+vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>", opts_silent)
+vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<cr>", opts_silent)
 
 -- move lines up and down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
