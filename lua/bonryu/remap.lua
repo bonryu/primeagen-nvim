@@ -23,6 +23,7 @@ vim.keymap.set("n", "<A-h>", "<C-w>h")
 vim.keymap.set("n", "<A-j>", "<C-w>j")
 vim.keymap.set("n", "<A-k>", "<C-w>k")
 vim.keymap.set("n", "<A-l>", "<C-w>l")
+vim.keymap.set("n", "<A-p>", "<C-w>p")  -- go to previous window
 
 -- Resize with Alt Shift
 vim.keymap.set("n", "<A-S-j>", ":resize -2<CR>")
@@ -83,12 +84,14 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>!tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
--- quick fix navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- quick fix list navigation
+vim.keymap.set("n", "<]-c>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<[-c>", "<cmd>cprev<CR>zz")
+-- same is cnext and cprev but location list for the current window is used instead of the quickfix list
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+-- what is this? look back at primeagen's 0 to lsp video
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 

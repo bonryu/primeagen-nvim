@@ -5,7 +5,10 @@ vim.g.mapleader = " "
 local options = {
     -- guicursor = "",                      -- keep rectangle cursor in insert mode
     cmdheight = 2,                          -- more space in the neovim command line for displaying messages
-    completeopt = { "menuone", "noselect"}, -- mostly just for cmp
+    completeopt = {
+        "menuone", "noinsert",
+        "noselect", "preview",
+    }, -- mostly just for cmp
     conceallevel = 0,                       -- so that `` is visible in markdonw files
     fileencoding = "utf-8",                 -- the encoding writtent to a file
     nu = true,                              -- number, nu, nonumber, nonu. Line numbering
