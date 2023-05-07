@@ -19,17 +19,11 @@ vim.g.maplocalleader = " "
 --  command_mode = "c",
 
 -- Better window navigation
-vim.keymap.set("n", "<A-h>", "<C-w>h")
-vim.keymap.set("n", "<A-j>", "<C-w>j")
-vim.keymap.set("n", "<A-k>", "<C-w>k")
-vim.keymap.set("n", "<A-l>", "<C-w>l")
-vim.keymap.set("n", "<A-p>", "<C-w>p")  -- go to previous window
-
--- Resize with Alt Shift
-vim.keymap.set("n", "<A-S-j>", ":resize -2<CR>")
-vim.keymap.set("n", "<A-S-k>", ":resize +2<CR>")
-vim.keymap.set("n", "<A-S-h>", ":vertical resize +2<CR>")
-vim.keymap.set("n", "<A-S-l>", ":vertical resize -2<CR>")
+-- vim.keymap.set("n", "<A-h>", "<C-w>h")
+-- vim.keymap.set("n", "<A-j>", "<C-w>j")
+-- vim.keymap.set("n", "<A-k>", "<C-w>k")
+-- vim.keymap.set("n", "<A-l>", "<C-w>l")
+vim.keymap.set("n", "<A-p>", "<C-w>p")  -- go to previous windowv
 
 -- Stay in indent mode
 vim.keymap.set("v", ">", ">gv")
@@ -87,7 +81,7 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 -- quick fix list navigation
 vim.keymap.set("n", "<]-c>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<[-c>", "<cmd>cprev<CR>zz")
--- same is cnext and cprev but location list for the current window is used instead of the quickfix list
+-- same as cnext and cprev but location list for the current window is used instead of the quickfix list
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -102,4 +96,6 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/bonryu/packer.lua<
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
+
+
 end)
