@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 
 local options = {
     -- guicursor = "",                      -- keep rectangle cursor in insert mode
-    cmdheight = 2,                          -- more space in the neovim command line for displaying messages
+    cmdheight = 1,                          -- more space in the neovim command line for displaying messages
     completeopt = {
         "menuone", "noinsert",
         "noselect", "preview",

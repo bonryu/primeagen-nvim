@@ -23,15 +23,15 @@ vim.g.maplocalleader = " "
 -- vim.keymap.set("n", "<A-j>", "<C-w>j")
 -- vim.keymap.set("n", "<A-k>", "<C-w>k")
 -- vim.keymap.set("n", "<A-l>", "<C-w>l")
-vim.keymap.set("n", "<A-p>", "<C-w>p")  -- go to previous windowv
+-- vim.keymap.set("n", "<A-p>", "<C-w>p")  -- go to previous windowv
 
 -- Stay in indent mode
-vim.keymap.set("v", ">", ">gv")
-vim.keymap.set("v", "<", "<gv")
+-- vim.keymap.set("v", "<", "<gv")
+-- vim.keymap.set("v", ">", ">gv")
 
 -- Navigate buffers
-vim.keymap.set("n", "<S-l>", ":bnext<CR>")
-vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
+-- vim.keymap.set("n", "<S-l>", ":bnext<CR>")
+-- vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
 
 -- Show explorer/netrw
 -- vim.keymap.set("n", "<leader>e", ":Vex 20<cr>")
@@ -40,19 +40,16 @@ vim.keymap.set("n", "<leader>pv", ":Ex<CR>", opts_silent)
 vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>", opts_silent)
 vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<cr>", opts_silent)
 
--- move lines up and down in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- leaves cursor in place when joining lines
-vim.keymap.set("n", "J", "mzJ`z")
+-- vim.keymap.set("n", "J", "mzJ`z")
 -- leaves cursor in place while half page jumping
 -- zz in vim centres screen on current line
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- allows searched and found terms to stay in the middle
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
 
 
 
@@ -75,6 +72,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- make Q do nothing
 vim.keymap.set("n", "Q", "<nop>")
+
 vim.keymap.set("n", "<C-f>", "<cmd>!tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
