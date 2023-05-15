@@ -37,8 +37,8 @@ vim.g.maplocalleader = " "
 -- vim.keymap.set("n", "<leader>e", ":Vex 20<cr>")
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>", opts_silent)
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>", opts_silent)
-vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<cr>", opts_silent)
+-- vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>", opts_silent)
+-- vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<cr>", opts_silent)
 
 
 -- leaves cursor in place when joining lines
