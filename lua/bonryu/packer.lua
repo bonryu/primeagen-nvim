@@ -143,4 +143,5 @@ return packer.startup(function(use)
             vim.o.timeoutlen = 300
         end
     }
+    use "tpope/vim-unimpaired"
 end)

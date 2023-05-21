@@ -2,18 +2,7 @@ local status_ok, tmux = pcall(require, "tmux")
 if not status_ok then
     return
 end
-
-vim.keymap.set("n", "<A-h>", [[<cmd>lua require("tmux").move_left()<cr>]])
-vim.keymap.set("n", "<A-j>", [[<cmd>lua require("tmux").move_bottom()<cr>]])
-vim.keymap.set("n", "<A-k>", [[<cmd>lua require("tmux").move_top()<cr>]])
-vim.keymap.set("n", "<A-l>", [[<cmd>lua require("tmux").move_right()<cr>]])
-vim.keymap.set("n", "<A-p>", [[<cmd>lua require("tmux").previous_window()<cr>]])
-
-vim.keymap.set("n", "<A-S-h>", [[<cmd>lua require("tmux").resize_left()<cr>]])
-vim.keymap.set("n", "<A-S-j>", [[<cmd>lua require("tmux").resize_bottom()<cr>]])
-vim.keymap.set("n", "<A-S-k>", [[<cmd>lua require("tmux").resize_top()<cr>]])
-vim.keymap.set("n", "<A-S-l>", [[<cmd>lua require("tmux").resize_right()<cr>]])
-
+-- See plugin/which-key.lua for keybindings for moving between windows in nvim
 tmux.setup {
     -- on_attach = my_on_attach,
     copy_sync = {

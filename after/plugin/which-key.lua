@@ -18,18 +18,26 @@ end
 
 -- move lines up and down in visual mode
 -- can't seem to make these work using whick-key syntax so just use vim.keymap.set and use whick-key to set the labels
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Stay in indent mode
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
+-- vim.keymap.set("v", "<", "<gv")
+-- vim.keymap.set("v", ">", ">gv")
 local noprefixmappings_visualmode = {
-    ["J"] = { "move lines down in visual mode" },
-    ["K"] = { "Move lines up in visual mode" },
-    ["<"] = { "<gv", "Indent Left and Stay in indent mode" },
-    [">"] = { ">gv", "Indent Right and Stay in indent mode" },
+    J = { ":m '>+1<CR>gv=gv", "move lines down in visual mode", mode = "v" },
+    K = { ":m '<-2<CR>gv=gv", "move lines up in visual mode", mode = "v" },
+    ["<"] = { "<gv", "Indent Left and Stay in indent mode", mode = "v" },
+    [">"] = { ">gv", "Indent Right and Stay in indent mode", mode = "v" },
+    -- greatest remap ever
+    -- delete into the null/void register, then paste before. Use like this:
+    -- 1. yiw foo
+    -- 2. viw bar
+    -- 3. p to replace bar with foo.
+    -- 4. optionally "p" to keep pasting foo after the newly pasted "foo"
+    -- vim.keymap.set({ "x" }, "p", [["_dP]])
+    p = { [["_dP]], '[["_dP]] delete into _ register and paste before', mode = { "x" } }
 }
-wk.register { noprefixmappings_visualmode, { mode = "v" } }
+wk.register { noprefixmappings_visualmode }
 
 local noprefixmappings_normalmode = {
     ["J"] = { "mzJ`z", "leaves cursor in place when joining lines" },
@@ -40,14 +48,57 @@ local noprefixmappings_normalmode = {
     ["<C-u>"] = { "<C-u>zz", "half page jump up in place" },
     ["n"] = { "nzzzv", "nzzzv search and found terms stay in middle" },
     ["N"] = { "Nzzzv", "Nzzzv search and found terms stay in middle" },
+    Q = { "<nop>", "<nop> Make Q do nothing", mode = "n" }
 }
 wk.register { noprefixmappings_normalmode, { mode = "n" } }
 
-local leaderprefixmappings_normalmode = {
-    ['e'] = {"<cmd>NvimTreeFocus<Cr>", "NvimTreeFocus"},
-    ['t'] = {"<cmd>NvimTreeToggle<Cr>", "NvimTreeToggle"},
+local leaderprefixmappings = {
+    f = { "<cmd>lua vim.lsp.buf.format()<cr>", "format" },
+    e = { "<cmd>NvimTreeFocus<Cr>", "NvimTreeFocus" },
+    t = { "<cmd>NvimTreeToggle<Cr>", "NvimTreeToggle" },
+    -- -- next greatest remap ever : asbjornHaland
+    -- -- remap <leader>[y|Y] to copy to system clipboard
+    -- -- vim.keymap.set({ "n", "v", "x" }, "<leader>y", [["+y]])
+    -- vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
+    -- -- vim.keymap.set({ "n", "v", "x" }, "<leader>p", [["+p]])
+    -- vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
+    -- vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+    y = { [["+y]], '"+y Copy to system clipboard', mode = { "n", "v" } },
+    p = { [["+p]], '"+p Pase from system clipboard', mode = { "n", "v" } },
+    Y = { [["+Y]], '"+Y Copy to system clipboard', mode = { "n", "v" } },
+    P = { [["+P]], '"+P Pase from system clipboard', mode = { "n", "v" } },
+    x = { [["+x]], '"+x Cut into system clipboard', mode = { "n", "v" } },
+    s = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "asfd", mode = { "n", "v" } },
+    ["<leader>"] = { function() vim.cmd("so") end, 'vim.cmd("so")', mode = "n" },
 }
-wk.register { leaderprefixmappings_normalmode, prefix = "<leader>" }
+wk.register { leaderprefixmappings, prefix = "<leader>" }
+
+-- File system related
+wk.register({
+    ["<leader>f"] = {
+        name = "+file",
+        f = { "<cmd>Telescope find_files<cr>", "Telescope Find File" },
+        r = { "<cmd>Telescope oldfiles<cr>", "Telescope Open Recent File" },
+        n = { "<cmd>enew<cr>", "New File" },
+        g = { "<cmd>Telescope git_files<cr>", "Telescope Git files" },
+        s = { "Telescope grep_string" }, -- see plugin/telescope.lua
+        p = { "<cmd>e ~/.config/nvim/lua/bonryu/packer.lua<CR>]]", "edit packer.lua" },
+        x = { "<cmd>!chmod +x %<CR>", "chmod +x %" },
+    },
+})
+
+
+wk.register({
+    ["<A-h>"] = { [[<cmd>lua require("tmux").move_left()<cr>]], "tmux move left" },
+    ["<A-j>"] = { [[ <cmd>lua require("tmux").move_bottom()<cr> ]], "tmux move bottom" },
+    ["<A-k>"] = { [[ <cmd>lua require("tmux").move_top()<cr> ]], "tmux move top" },
+    ["<A-l>"] = { [[<cmd>lua require("tmux").move_right()<cr>]], "tmuxh move right" },
+    ["<A-p>"] = { [[<cmd>lua require("tmux").previous_window()<cr>]], "previous window" },
+    ["<A-S-h>"] = { [[<cmd>lua require("tmux").resize_left()<cr>]], "tmux resize left" },
+    ["<A-S-j>"] = { [[<cmd>lua require("tmux").resize_bottom()<cr>]], "tmux resize bottom" },
+    ["<A-S-k>"] = { [[<cmd>lua require("tmux").resize_top()<cr>]], "tmux resize top" },
+    ["<A-S-l>"] = { [[<cmd>lua require("tmux").resize_right()<cr>]], "tmux resize right" },
+})
 
 wk.setup {
     -- your configuration comes here

@@ -1,5 +1,5 @@
 -- local opts = { noremap = true, silent = false }
-local opts_silent = { noremap = true, silent = true }
+-- local opts_silent = { noremap = true, silent = true }
 -- local term_opts = { silent = true}
 --
 -- -- Shorten function name
@@ -35,7 +35,7 @@ vim.g.maplocalleader = " "
 
 -- Show explorer/netrw
 -- vim.keymap.set("n", "<leader>e", ":Vex 20<cr>")
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>", opts_silent)
+-- vim.keymap.set("n", "<leader>pv", ":Ex<CR>", opts_silent)
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>", opts_silent)
 -- vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<cr>", opts_silent)
@@ -52,48 +52,19 @@ vim.keymap.set("n", "<leader>pv", ":Ex<CR>", opts_silent)
 -- vim.keymap.set("n", "N", "Nzzzv")
 
 
-
--- greatest remap ever
--- vim.keymap.set("x", "<leader>p", "\"_dP")
--- delete into the null/void register, then paste before. Use like this:
--- 1. yiw foo
--- 2. viw bar
--- 3. p to replace bar with foo.
--- 4. optionally "p" to keep pasting foo after the newly pasted "foo"
-vim.keymap.set({ "x" }, "p", [["_dP]])
--- next greatest remap ever : asbjornHaland
--- remap <leader>[y|Y] to copy to system clipboard
-vim.keymap.set({ "n", "v", "x" }, "<leader>y", [["+y]])
-vim.keymap.set({ "n", "v", "x" }, "<leader>Y", [["+Y]])
-vim.keymap.set({ "n", "v", "x" }, "<leader>p", [["+p]])
-vim.keymap.set({ "n", "v", "x" }, "<leader>P", [["+P]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
-
 -- make Q do nothing
-vim.keymap.set("n", "Q", "<nop>")
+-- vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>!tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
--- quick fix list navigation
-vim.keymap.set("n", "<]-c>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<[-c>", "<cmd>cprev<CR>zz")
--- same as cnext and cprev but location list for the current window is used instead of the quickfix list
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- what is this? look back at primeagen's 0 to lsp video
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 -- "<cmd>e filename" will edit filename
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/bonryu/packer.lua<CR>");
 -- vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-
-
-end)
+-- vim.keymap.set("n", "<leader><leader>", function() vim.cmd("so") end)
