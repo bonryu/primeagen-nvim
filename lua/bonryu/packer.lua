@@ -144,4 +144,6 @@ return packer.startup(function(use)
         end
     }
     use "tpope/vim-unimpaired"
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use "folke/neodev.nvim"
 end)
